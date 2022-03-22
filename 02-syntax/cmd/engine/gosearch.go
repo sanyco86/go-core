@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-const maxDepth = 2
+const maxDepth = 3
 
 var urls = []string{"https://go.dev", "https://golang.org"}
 
