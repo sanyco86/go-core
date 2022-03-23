@@ -20,15 +20,12 @@ func main() {
 		flag.PrintDefaults()
 		return
 	}
-
 	fmt.Printf("Начался поиск по: %s...\n", *q)
-
 	pages, err := scan(urls)
 	if err != nil {
 		log.Fatal(err)
 		return
 	}
-
 	for _, p := range pages {
 		if strings.Contains(strings.ToLower(p.Title), strings.ToLower(*q)) {
 			fmt.Printf("`%s` Найдено на: %s\n", p.Title, p.URL)
@@ -39,12 +36,10 @@ func main() {
 func scan(urls []string) ([]crawler.Document, error) {
 	var result []crawler.Document
 	s := spider.New()
-
 	for _, url := range urls {
 		pages, err := s.Scan(url, maxDepth)
 		if err != nil {
 			log.Fatal(err)
-			return result, err
 		}
 		result = append(result, pages...)
 	}
