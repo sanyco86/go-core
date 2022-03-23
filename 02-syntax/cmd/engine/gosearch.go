@@ -16,16 +16,14 @@ var urls = []string{"https://go.dev", "https://golang.org"}
 func main() {
 	q := flag.String("s", "", "Поиск")
 	flag.Parse()
-
 	if len(*q) == 0 {
-		fmt.Println("Используйте флаг `s`. Например: gosearch –s Language")
+		flag.PrintDefaults()
 		return
 	}
 
 	fmt.Printf("Начался поиск по: %s...\n", *q)
 
 	pages, err := scan(urls)
-
 	if err != nil {
 		log.Fatal(err)
 		return
@@ -44,12 +42,10 @@ func scan(urls []string) ([]crawler.Document, error) {
 
 	for _, url := range urls {
 		pages, err := s.Scan(url, maxDepth)
-
 		if err != nil {
 			log.Fatal(err)
 			return result, err
 		}
-
 		result = append(result, pages...)
 	}
 	return result, nil
