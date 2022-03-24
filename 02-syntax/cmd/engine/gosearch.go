@@ -39,7 +39,7 @@ func scan(urls []string) ([]crawler.Document, error) {
 	for _, url := range urls {
 		pages, err := s.Scan(url, maxDepth)
 		if err != nil {
-			log.Fatal(err)
+			log.Print(err)
 		}
 		result = append(result, pages...)
 	}
