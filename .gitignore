@@ -1,2 +1,4 @@
 # JetBrains IDE settings folder
 .idea
+
+go.sum
