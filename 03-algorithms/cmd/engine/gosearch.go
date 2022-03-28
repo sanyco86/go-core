@@ -28,7 +28,7 @@ func main() {
 	store.Add(docs)
 	ids := store.Search(*q)
 	for _, id := range ids {
-		doc, err := Search(id, docs)
+		doc, err := search(id, docs)
 		if err != nil {
 			log.Print(err)
 			break
@@ -38,7 +38,7 @@ func main() {
 	fmt.Println("Поиск окончен")
 }
 
-func Search(id int, docs []crawler.Document) (crawler.Document, error) {
+func search(id int, docs []crawler.Document) (crawler.Document, error) {
 	index := sort.Search(len(docs), func(index int) bool { return docs[index].ID >= id })
 	if index >= len(docs) || docs[index].ID != id {
 		doc := crawler.Document{}
