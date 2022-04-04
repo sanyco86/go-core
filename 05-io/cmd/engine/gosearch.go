@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"errors"
 	"flag"
 	"fmt"
@@ -9,6 +10,7 @@ import (
 	"go-core/pkg/index/hash"
 	"go-core/pkg/storage"
 	"log"
+	"os"
 	"sort"
 )
 
@@ -51,11 +53,57 @@ func search(id int, docs []crawler.Document) (crawler.Document, error) {
 }
 
 func scan() []crawler.Document {
-	if storage.Empty(fileName) {
-		storage.Write(scanUrls(), fileName)
+	if empty(fileName) {
+		store(scanUrls(), fileName)
 	}
-	docs, _ := storage.Read(fileName)
+	docs, _ := get(fileName)
 	return docs
+}
+
+func store(docs []crawler.Document, fileName string) (bool, error) {
+	f, err := os.Create(fileName)
+	if err != nil {
+		return false, err
+	}
+	data, err := json.Marshal(docs)
+	if err != nil {
+		return false, err
+	}
+	defer f.Close()
+	err = storage.Write(f, data)
+	if err != nil {
+		return false, err
+	}
+	return true, err
+}
+
+func get(fileName string) ([]crawler.Document, error) {
+	f, err := os.Open(fileName)
+	if err != nil {
+		return nil, err
+	}
+	b, err := storage.Read(f)
+	if err != nil {
+		return nil, err
+	}
+	defer f.Close()
+	var docs []crawler.Document
+	json.Unmarshal([]byte(b), &docs)
+	return docs, nil
+}
+
+func empty(fileName string) bool {
+	if _, err := os.Stat(fileName); os.IsNotExist(err) {
+		return true
+	}
+	fileInfo, err := os.Lstat(fileName)
+	if fileInfo.Size() == 0 {
+		return true
+	}
+	if err != nil {
+		return true
+	}
+	return false
 }
 
 func scanUrls() []crawler.Document {
