@@ -2,13 +2,13 @@ package storage
 
 import "io"
 
-//Write для записи
+// Write для записи
 func Write(w io.Writer, b []byte) error {
 	_, err := w.Write(b)
 	return err
 }
 
-//Read для чтения
+// Read для чтения
 func Read(r io.Reader) ([]byte, error) {
 	buf := make([]byte, 1024)
 	var b []byte
