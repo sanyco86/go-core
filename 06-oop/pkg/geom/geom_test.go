@@ -1,7 +1,7 @@
 package geom
 
 import (
-	"go-core/pkg/point"
+	"go-core/06-oop/pkg/point"
 	"testing"
 )
 

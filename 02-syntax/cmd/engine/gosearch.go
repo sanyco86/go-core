@@ -3,8 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
-	"go-core/pkg/crawler"
-	"go-core/pkg/crawler/spider"
+	"go-core/02-syntax/pkg/crawler"
+	"go-core/02-syntax/pkg/crawler/spider"
 	"log"
 	"strings"
 )

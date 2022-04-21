@@ -4,9 +4,9 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	"go-core/pkg/crawler"
-	"go-core/pkg/crawler/spider"
-	"go-core/pkg/index/hash"
+	"go-core/03-algorithms/pkg/crawler"
+	"go-core/03-algorithms/pkg/crawler/spider"
+	"go-core/03-algorithms/pkg/index/hash"
 	"log"
 	"sort"
 )

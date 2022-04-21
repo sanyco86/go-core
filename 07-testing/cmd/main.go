@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"go-core/pkg/sorter"
+	"go-core/07-testing/pkg/sorter"
 )
 
 func main() {

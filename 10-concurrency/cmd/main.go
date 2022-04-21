@@ -1,6 +1,6 @@
 package main
 
-import "go-core/pkg/pingpong"
+import "go-core/10-concurrency/pkg/pingpong"
 
 func main() {
 	game := pingpong.New()

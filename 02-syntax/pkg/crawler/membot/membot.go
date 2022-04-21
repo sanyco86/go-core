@@ -1,7 +1,7 @@
 package membot
 
 import (
-	"go-core/pkg/crawler"
+	"go-core/02-syntax/pkg/crawler"
 )
 
 // Service - имитация служба поискового робота.

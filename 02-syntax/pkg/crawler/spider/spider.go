@@ -3,7 +3,7 @@
 package spider
 
 import (
-	"go-core/pkg/crawler"
+	"go-core/02-syntax/pkg/crawler"
 	"golang.org/x/net/html"
 	"log"
 	"net/http"

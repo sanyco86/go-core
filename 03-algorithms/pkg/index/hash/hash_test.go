@@ -1,7 +1,7 @@
 package hash
 
 import (
-	"go-core/pkg/crawler"
+	"go-core/03-algorithms/pkg/crawler"
 	"reflect"
 	"testing"
 )

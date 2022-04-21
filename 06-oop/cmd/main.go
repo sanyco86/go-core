@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"go-core/pkg/geom"
-	"go-core/pkg/point"
+	"go-core/06-oop/pkg/geom"
+	"go-core/06-oop/pkg/point"
 )
 
 func main() {
