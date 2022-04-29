@@ -5,6 +5,7 @@ import (
 	"go-core/11-network/pkg/crawler/spider"
 	"go-core/11-network/pkg/netsrv"
 	"log"
+	"net"
 	"sync"
 )
 
@@ -22,7 +23,7 @@ func main() {
 		wg.Done()
 	}()
 
-	listener, err := netsrv.ListenAndSearch(network, address)
+	listener, err := net.Listen(network, address)
 	if err != nil {
 		log.Fatal(err)
 	}

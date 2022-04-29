@@ -8,14 +8,6 @@ import (
 	"strings"
 )
 
-func ListenAndSearch(network, address string) (net.Listener, error) {
-	l, err := net.Listen(network, address)
-	if err != nil {
-		return nil, err
-	}
-	return l, nil
-}
-
 func Handle(conn net.Conn, docs []crawler.Document) {
 	defer conn.Close()
 
